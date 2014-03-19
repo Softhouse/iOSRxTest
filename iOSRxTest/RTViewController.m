@@ -40,12 +40,13 @@
     } completed:^{
         NSLog(@"Completed");
     }];
-
-    // Enable/disable the button based on the user having written an '@'
-    RAC(self.button, enabled) = [self.textField.rac_textSignal map:^id(NSString*value){
-        NSLog(@"rangeOfString: %lu", (unsigned long)[value rangeOfString:@"@"].location);
+    
+    RACSignal *validEmailSignal = [self.textField.rac_textSignal map:^id(id value) {
         return @([value rangeOfString:@"@"].location != NSNotFound);
     }];
+
+    // Enable/disable the button based on the user having written an '@'
+    RAC(self.button, enabled) = validEmailSignal;
 }
 
 - (void)didReceiveMemoryWarning
