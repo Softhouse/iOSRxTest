@@ -46,7 +46,11 @@
     }];
 
     // Enable/disable the button based on the user having written an '@'
-    RAC(self.button, enabled) = validEmailSignal;
+//    RAC(self.button, enabled) = validEmailSignal;
+    self.button.rac_command = [[RACCommand alloc] initWithEnabled:validEmailSignal signalBlock:^RACSignal *(id input) {
+        NSLog(@"Button was pressed");
+        return [RACSignal empty];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
