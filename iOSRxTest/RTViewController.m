@@ -7,12 +7,18 @@
 //
 
 #import "RTViewController.h"
+#import "RACEXTScope.h"
 
 
-@interface RTViewController ()
+@interface RTViewController (){
+    RACSubject *_runNext;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet UILabel *nextLabel;
 
 @end
 
@@ -21,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Hook up a regular array
     NSArray *array=@[@(1),@(2),@(3)];
     RACSequence *stream = [array rac_sequence];
@@ -51,6 +57,69 @@
         NSLog(@"Button was pressed");
         return [RACSignal empty];
     }];
+    
+
+    
+    // nytt försök
+//    @weakify(self);
+    __block NSNumber *iterCount = [NSNumber numberWithInt:0];
+    
+    RACSignal *fetchSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//        @strongify(self);
+        
+        int value = [iterCount intValue];
+        iterCount = [NSNumber numberWithInt:value + 1];
+
+        NSLog(@"Sleeping for %@ seconds", iterCount);
+        [NSThread sleepForTimeInterval:[iterCount integerValue]];
+
+        BOOL error = [iterCount integerValue] == 9;
+
+        if(error){
+            NSInteger errorCode = -42;
+            NSString *errorDomain = @"domain";
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"No data was received from the server."};
+            NSError *error = [NSError errorWithDomain:errorDomain code:errorCode
+                                             userInfo:userInfo];
+            [subscriber sendError: error];
+        } else {
+            [subscriber sendNext:iterCount];
+        }
+        
+        return [RACDisposable disposableWithBlock:^{
+            NSLog(@"dispose");
+        }];
+    }];
+    
+    RACSignal *fetchFromRepositorySignal = [fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
+    _runNext = [RACSubject subject];
+    
+    self.nextButton.rac_command = [[RACCommand alloc] initWithSignalBlock: ^RACSignal *(id input) {
+        NSLog(@"Next button Button was pressed");
+
+        [_runNext sendNext: iterCount];
+
+        return [RACSignal empty];
+    }];
+
+    [_runNext subscribeNext:^(id x) {
+        NSLog(@"_runNext subscribeNext");
+        [fetchSignal subscribeNext:^(id x) {
+            NSLog(@"Fetch done for value: %@", x);
+        } error:^(NSError *error) {
+            NSLog(@"Error in fetch");
+        } completed:^{
+            NSLog(@"Fetch completed");
+        }];
+    }];
+    
+   
+    // end nytt försök
+}
+
+- (void) refreshView:(NSNumber *)newValue
+{
+    [[self nextLabel] setText:@"My new label's text"];
 }
 
 - (void)didReceiveMemoryWarning
