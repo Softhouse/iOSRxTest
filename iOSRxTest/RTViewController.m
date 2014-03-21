@@ -9,6 +9,8 @@
 #import "RTViewController.h"
 #import "RACEXTScope.h"
 
+#import "RTAsyncFetch/RTAsyncFetchViewModel.h"
+
 
 @interface RTViewController (){
     RACSubject *_runNext;
@@ -21,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nextLabel;
 
 @property (nonatomic, strong, readwrite) NSString *nextLabelValue;
+
+@property (nonatomic, strong) RTAsyncFetchViewModel *viewModel;
 
 @end
 
@@ -62,72 +66,72 @@
     
 
     
+    self.viewModel = [[RTAsyncFetchViewModel alloc] init];
+    
+    RAC(self.nextLabel, text) = RACObserve(self.viewModel, nextLabelValue);
+    
     // nytt försök
-    RAC(self.nextLabel, text) = RACObserve(self, nextLabelValue);
+//    RAC(self.nextLabel, text) = RACObserve(self, nextLabelValue);
     
     @weakify(self);
     __block NSNumber *iterCount = [NSNumber numberWithInt:0];
     
-    RACSignal *fetchSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//        @strongify(self);
-        
-        int value = [iterCount intValue];
-        iterCount = [NSNumber numberWithInt:value + 1];
-
-        NSLog(@"Sleeping for %@ seconds", iterCount);
-        [NSThread sleepForTimeInterval:[iterCount integerValue]];
-
-        BOOL error = [iterCount integerValue] == 9;
-
-        if(error){
-            NSInteger errorCode = -42;
-            NSString *errorDomain = @"domain";
-            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"No data was received from the server."};
-            NSError *error = [NSError errorWithDomain:errorDomain code:errorCode
-                                             userInfo:userInfo];
-            [subscriber sendError: error];
-        } else {
-            [subscriber sendNext:iterCount];
-        }
-        
-        return [RACDisposable disposableWithBlock:^{
-            NSLog(@"dispose");
-        }];
-    }];
+//    RACSignal *fetchSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+////        @strongify(self);
+//        
+//        int value = [iterCount intValue];
+//        iterCount = [NSNumber numberWithInt:value + 1];
+//
+//        NSLog(@"Sleeping for %@ seconds", iterCount);
+//        [NSThread sleepForTimeInterval:[iterCount integerValue]];
+//
+//        BOOL error = [iterCount integerValue] == 9;
+//
+//        if(error){
+//            NSInteger errorCode = -42;
+//            NSString *errorDomain = @"domain";
+//            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"No data was received from the server."};
+//            NSError *error = [NSError errorWithDomain:errorDomain code:errorCode
+//                                             userInfo:userInfo];
+//            [subscriber sendError: error];
+//        } else {
+//            [subscriber sendNext:iterCount];
+//        }
+//        
+//        return [RACDisposable disposableWithBlock:^{
+//            NSLog(@"dispose");
+//        }];
+//    }] deliverOn: [RACScheduler scheduler]];
     
-    RACSignal *fetchFromRepositorySignal = [fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
-    _runNext = [RACSubject subject];
+//    RACSignal *fetchFromRepositorySignal = [fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
+//    _runNext = [RACSubject subject];
     
     self.nextButton.rac_command = [[RACCommand alloc] initWithSignalBlock: ^RACSignal *(id input) {
         NSLog(@"Next button Button was pressed");
-
-        [_runNext sendNext: iterCount];
+        @strongify(self);
+        
+        [self.viewModel fetchValue];
 
         return [RACSignal empty];
     }];
 
-    [_runNext subscribeNext:^(id x) {
-        @strongify(self);
-        NSLog(@"_runNext subscribeNext");
-        [fetchSignal subscribeNext:^(id x) {
-            NSLog(@"Fetch done for value: %@", x);
-            self.nextLabelValue = [x stringValue];
-        } error:^(NSError *error) {
-            NSLog(@"Error in fetch");
-        } completed:^{
-            NSLog(@"Fetch completed");
-        }];
-    }];
+//    [_runNext subscribeNext:^(id x) {
+//        @strongify(self);
+//        NSLog(@"_runNext subscribeNext");
+//        [fetchFromRepositorySignal subscribeNext:^(id x) {
+//            NSLog(@"Fetch done for value: %@", x);
+//            self.nextLabelValue = [x stringValue];
+//        } error:^(NSError *error) {
+//            NSLog(@"Error in fetch");
+//        } completed:^{
+//            NSLog(@"Fetch completed");
+//        }];
+//    }];
     
     
     
    
     // end nytt försök
-}
-
-- (void) refreshView:(NSNumber *)newValue
-{
-    [[self nextLabel] setText:@"My new label's text"];
 }
 
 - (void)didReceiveMemoryWarning
