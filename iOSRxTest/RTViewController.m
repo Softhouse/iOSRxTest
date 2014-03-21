@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UILabel *nextLabel;
 
+@property (nonatomic, strong, readwrite) NSString *nextLabelValue;
+
 @end
 
 @implementation RTViewController
@@ -40,7 +42,7 @@
     
     // Hook up subscription to the text field signal
     [self.textField.rac_textSignal subscribeNext:^(id x) {
-        NSLog(@"New value: %@", x);
+        NSLog(@"new textField value: %@", x);
     } error:^(NSError *error) {
         NSLog(@"Error: %@", error);
     } completed:^{
@@ -61,7 +63,9 @@
 
     
     // nytt försök
-//    @weakify(self);
+    RAC(self.nextLabel, text) = RACObserve(self, nextLabelValue);
+    
+    @weakify(self);
     __block NSNumber *iterCount = [NSNumber numberWithInt:0];
     
     RACSignal *fetchSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -103,15 +107,19 @@
     }];
 
     [_runNext subscribeNext:^(id x) {
+        @strongify(self);
         NSLog(@"_runNext subscribeNext");
         [fetchSignal subscribeNext:^(id x) {
             NSLog(@"Fetch done for value: %@", x);
+            self.nextLabelValue = [x stringValue];
         } error:^(NSError *error) {
             NSLog(@"Error in fetch");
         } completed:^{
             NSLog(@"Fetch completed");
         }];
     }];
+    
+    
     
    
     // end nytt försök
