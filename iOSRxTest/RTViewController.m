@@ -19,13 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
-@property (weak, nonatomic) IBOutlet UILabel *nextLabel;
-
-@property (nonatomic, strong, readwrite) NSString *nextLabelValue;
-
-@property (nonatomic, strong) RTAsyncFetchViewModel *viewModel;
-
 @end
 
 @implementation RTViewController
@@ -61,23 +54,6 @@
 //    RAC(self.button, enabled) = validEmailSignal;
     self.button.rac_command = [[RACCommand alloc] initWithEnabled:validEmailSignal signalBlock:^RACSignal *(id input) {
         NSLog(@"Button was pressed");
-        return [RACSignal empty];
-    }];
-    
-
-    
-    self.viewModel = [[RTAsyncFetchViewModel alloc] init];
-    
-    RAC(self.nextLabel, text) = RACObserve(self.viewModel, nextLabelValue);
-
-    @weakify(self);
-
-    self.nextButton.rac_command = [[RACCommand alloc] initWithSignalBlock: ^RACSignal *(id input) {
-        NSLog(@"Next button was pressed");
-        @strongify(self);
-        
-        [self.viewModel fetchValue];
-
         return [RACSignal empty];
     }];
 }

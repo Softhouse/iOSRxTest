@@ -23,6 +23,7 @@
 		2208345818DA00EB00D1AF4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2208343718DA00EB00D1AF4B /* UIKit.framework */; };
 		2208346018DA00EB00D1AF4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2208345E18DA00EB00D1AF4B /* InfoPlist.strings */; };
 		2208346218DA00EB00D1AF4B /* iOSRxTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */; };
+		222DC5AB18E6D3C90031A511 /* RTAsyncFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */; };
 		2761CD60EB48447393E8A125 /* libPods-iOSRxTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 		2208345D18DA00EB00D1AF4B /* iOSRxTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSRxTestTests-Info.plist"; sourceTree = "<group>"; };
 		2208345F18DA00EB00D1AF4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSRxTestTests.m; sourceTree = "<group>"; };
+		222DC5A918E6D3C90031A511 /* RTAsyncFetchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAsyncFetchViewController.h; path = RTAsyncFetch/RTAsyncFetchViewController.h; sourceTree = "<group>"; };
+		222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTAsyncFetchViewController.m; path = RTAsyncFetch/RTAsyncFetchViewController.m; sourceTree = "<group>"; };
 		38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSRxTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B0ECF2109B4437BC2FA939 /* Pods-iOSRxTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRxTest.xcconfig"; path = "Pods/Pods-iOSRxTest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +99,8 @@
 				2200F53E18DC79790005D10E /* RTAsyncFetchViewModel.m */,
 				2200F54018DC88910005D10E /* RTAsyncFetchRepository.h */,
 				2200F54118DC88910005D10E /* RTAsyncFetchRepository.m */,
+				222DC5A918E6D3C90031A511 /* RTAsyncFetchViewController.h */,
+				222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */,
 			);
 			name = RTAsyncFetch;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 			files = (
 				2208344418DA00EB00D1AF4B /* RTAppDelegate.m in Sources */,
 				2200F53F18DC79790005D10E /* RTAsyncFetchViewModel.m in Sources */,
+				222DC5AB18E6D3C90031A511 /* RTAsyncFetchViewController.m in Sources */,
 				2208344D18DA00EB00D1AF4B /* RTViewController.m in Sources */,
 				2208344018DA00EB00D1AF4B /* main.m in Sources */,
 				2200F54218DC88910005D10E /* RTAsyncFetchRepository.m in Sources */,
