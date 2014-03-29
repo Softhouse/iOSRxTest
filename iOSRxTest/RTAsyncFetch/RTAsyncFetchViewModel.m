@@ -34,16 +34,17 @@
     
     self.repository = [[RTAsyncFetchRepository alloc] init];
     
+    
+    RACSignal *fetchFromRepositorySignal = [self.repository.fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
+
     // we need to make a weak ref out of self, otherwise we'd get
     // a retain cycle in the blocks below
     @weakify(self);
-    
-//    RACSignal *fetchFromRepositorySignal = [self.repository.fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
-    
+
     [_runNext subscribeNext:^(id x) {
         @strongify(self);
         NSLog(@"_runNext subscribeNext, thread: %@", [NSThread currentThread]);
-        [self.repository.fetchSignal subscribeNext:^(id x) {
+        [fetchFromRepositorySignal subscribeNext:^(id x) {
             NSLog(@"Fetch done, thread: %@", [NSThread currentThread]);
             self.nextLabelValue = [x stringValue];
         } error:^(NSError *error) {

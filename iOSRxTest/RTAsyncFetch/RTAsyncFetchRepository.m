@@ -26,10 +26,7 @@
     
     __block NSNumber *iterCount = [NSNumber numberWithInt:0];
     
-//    @weakify(self);
-
-    self.fetchSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        //        @strongify(self);
+    RACSignal *signal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
         NSLog(@"Fetching, thread: %@", [NSThread currentThread]);
         
@@ -55,7 +52,9 @@
         return [RACDisposable disposableWithBlock:^{
             NSLog(@"dispose");
         }];
-    }] deliverOn: [RACScheduler scheduler]];
+    }] subscribeOn:[RACScheduler scheduler]];
+    
+    self.fetchSignal = signal;
     
     return self;
 }

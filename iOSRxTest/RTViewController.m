@@ -69,69 +69,17 @@
     self.viewModel = [[RTAsyncFetchViewModel alloc] init];
     
     RAC(self.nextLabel, text) = RACObserve(self.viewModel, nextLabelValue);
-    
-    // nytt försök
-//    RAC(self.nextLabel, text) = RACObserve(self, nextLabelValue);
-    
+
     @weakify(self);
-    __block NSNumber *iterCount = [NSNumber numberWithInt:0];
-    
-//    RACSignal *fetchSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-////        @strongify(self);
-//        
-//        int value = [iterCount intValue];
-//        iterCount = [NSNumber numberWithInt:value + 1];
-//
-//        NSLog(@"Sleeping for %@ seconds", iterCount);
-//        [NSThread sleepForTimeInterval:[iterCount integerValue]];
-//
-//        BOOL error = [iterCount integerValue] == 9;
-//
-//        if(error){
-//            NSInteger errorCode = -42;
-//            NSString *errorDomain = @"domain";
-//            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"No data was received from the server."};
-//            NSError *error = [NSError errorWithDomain:errorDomain code:errorCode
-//                                             userInfo:userInfo];
-//            [subscriber sendError: error];
-//        } else {
-//            [subscriber sendNext:iterCount];
-//        }
-//        
-//        return [RACDisposable disposableWithBlock:^{
-//            NSLog(@"dispose");
-//        }];
-//    }] deliverOn: [RACScheduler scheduler]];
-    
-//    RACSignal *fetchFromRepositorySignal = [fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
-//    _runNext = [RACSubject subject];
-    
+
     self.nextButton.rac_command = [[RACCommand alloc] initWithSignalBlock: ^RACSignal *(id input) {
-        NSLog(@"Next button Button was pressed");
+        NSLog(@"Next button was pressed");
         @strongify(self);
         
         [self.viewModel fetchValue];
 
         return [RACSignal empty];
     }];
-
-//    [_runNext subscribeNext:^(id x) {
-//        @strongify(self);
-//        NSLog(@"_runNext subscribeNext");
-//        [fetchFromRepositorySignal subscribeNext:^(id x) {
-//            NSLog(@"Fetch done for value: %@", x);
-//            self.nextLabelValue = [x stringValue];
-//        } error:^(NSError *error) {
-//            NSLog(@"Error in fetch");
-//        } completed:^{
-//            NSLog(@"Fetch completed");
-//        }];
-//    }];
-    
-    
-    
-   
-    // end nytt försök
 }
 
 - (void)didReceiveMemoryWarning
