@@ -24,6 +24,7 @@
 		2208346018DA00EB00D1AF4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2208345E18DA00EB00D1AF4B /* InfoPlist.strings */; };
 		2208346218DA00EB00D1AF4B /* iOSRxTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */; };
 		222DC5AB18E6D3C90031A511 /* RTAsyncFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */; };
+		222DC5AF18E750260031A511 /* RTFormValidationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DC5AE18E750260031A511 /* RTFormValidationViewController.m */; };
 		2761CD60EB48447393E8A125 /* libPods-iOSRxTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSRxTestTests.m; sourceTree = "<group>"; };
 		222DC5A918E6D3C90031A511 /* RTAsyncFetchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAsyncFetchViewController.h; path = RTAsyncFetch/RTAsyncFetchViewController.h; sourceTree = "<group>"; };
 		222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTAsyncFetchViewController.m; path = RTAsyncFetch/RTAsyncFetchViewController.m; sourceTree = "<group>"; };
+		222DC5AD18E750260031A511 /* RTFormValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTFormValidationViewController.h; path = RTFormValidation/RTFormValidationViewController.h; sourceTree = "<group>"; };
+		222DC5AE18E750260031A511 /* RTFormValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTFormValidationViewController.m; path = RTFormValidation/RTFormValidationViewController.m; sourceTree = "<group>"; };
 		38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSRxTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B0ECF2109B4437BC2FA939 /* Pods-iOSRxTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRxTest.xcconfig"; path = "Pods/Pods-iOSRxTest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +143,7 @@
 		2208343918DA00EB00D1AF4B /* iOSRxTest */ = {
 			isa = PBXGroup;
 			children = (
+				222DC5AC18E74FC80031A511 /* RTFormValidation */,
 				2200F53C18DC792F0005D10E /* RTAsyncFetch */,
 				2208344218DA00EB00D1AF4B /* RTAppDelegate.h */,
 				2208344318DA00EB00D1AF4B /* RTAppDelegate.m */,
@@ -179,6 +183,15 @@
 				2208345E18DA00EB00D1AF4B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		222DC5AC18E74FC80031A511 /* RTFormValidation */ = {
+			isa = PBXGroup;
+			children = (
+				222DC5AD18E750260031A511 /* RTFormValidationViewController.h */,
+				222DC5AE18E750260031A511 /* RTFormValidationViewController.m */,
+			);
+			name = RTFormValidation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2208344418DA00EB00D1AF4B /* RTAppDelegate.m in Sources */,
+				222DC5AF18E750260031A511 /* RTFormValidationViewController.m in Sources */,
 				2200F53F18DC79790005D10E /* RTAsyncFetchViewModel.m in Sources */,
 				222DC5AB18E6D3C90031A511 /* RTAsyncFetchViewController.m in Sources */,
 				2208344D18DA00EB00D1AF4B /* RTViewController.m in Sources */,
