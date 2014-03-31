@@ -1,4 +1,6 @@
 PODS:
+  - OCHamcrest (3.0.1)
+  - OCMock (2.2.3)
   - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
@@ -8,10 +10,14 @@ PODS:
   - RXCollections (1.0)
 
 DEPENDENCIES:
+  - OCHamcrest
+  - OCMock
   - ReactiveCocoa (~> 2.1.4)
   - RXCollections (= 1.0)
 
 SPEC CHECKSUMS:
+  OCHamcrest: 782c52ae8c673e5d6060a65005cfd26d20d519ba
+  OCMock: 74e4ddbcef134170dcc844f91c691f13868075d7
   ReactiveCocoa: 0db710a0afa1c627a64470e5c912a3870d4854ae
   RXCollections: 7df8fcb97b433260a11ce226dd74b50545ff0a0f
 

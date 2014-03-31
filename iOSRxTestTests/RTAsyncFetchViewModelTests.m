@@ -6,9 +6,14 @@
 //  Copyright (c) 2014 Thomas Lundström. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface RTAsyncFetchViewModelTests : SenTestCase
+#import <OCMock/OCMock.h>
+
+#import "RTAsyncFetchRepository.h"
+#import "RTAsyncFetchViewModel.h"
+
+@interface RTAsyncFetchViewModelTests : XCTestCase
 
 @end
 
@@ -26,9 +31,21 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testFetchWithValidValue
 {
-    STFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    RACSubject *fakeSignal = [RACSubject subject];
+    
+    id repository = [OCMockObject mockForClass:[RTAsyncFetchRepository class]];
+    [[[repository stub] andReturn: fakeSignal] fetchSignal];
+    
+    RTAsyncFetchViewModel *viewModel = [[RTAsyncFetchViewModel alloc] initWithRepository: repository
+                                                                               scheduler:[RACScheduler immediateScheduler]];
+
+    [viewModel fetchValue];
+    
+    [fakeSignal sendNext:@(159)];
+    
+    XCTAssertEqualObjects(viewModel.nextLabelValue, @"159");
 }
 
 @end

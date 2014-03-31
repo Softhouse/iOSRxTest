@@ -10,6 +10,7 @@
 #import<ReactiveCocoa/ReactiveCocoa.h>
 #import "RACEXTScope.h"
 #import "RTAsyncFetchViewModel.h"
+#import "RTAsyncFetchRepository.h"
 
 @interface RTAsyncFetchViewController (){
     RACSubject *_runNext;
@@ -27,7 +28,10 @@
 {
     [super viewDidAppear:animated];
     
-    self.viewModel = [[RTAsyncFetchViewModel alloc] init];
+    RTAsyncFetchRepository *repository = [[RTAsyncFetchRepository alloc] init];
+    
+    self.viewModel = [[RTAsyncFetchViewModel alloc] initWithRepository: repository
+                                                             scheduler: [RACScheduler mainThreadScheduler]];
     
     RAC(self.nextLabel, text) = RACObserve(self.viewModel, nextLabelValue);
     

@@ -22,10 +22,11 @@
 		2208345718DA00EB00D1AF4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2208343318DA00EB00D1AF4B /* Foundation.framework */; };
 		2208345818DA00EB00D1AF4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2208343718DA00EB00D1AF4B /* UIKit.framework */; };
 		2208346018DA00EB00D1AF4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2208345E18DA00EB00D1AF4B /* InfoPlist.strings */; };
-		2208346218DA00EB00D1AF4B /* iOSRxTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */; };
 		222DC5AB18E6D3C90031A511 /* RTAsyncFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */; };
 		222DC5AF18E750260031A511 /* RTFormValidationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DC5AE18E750260031A511 /* RTFormValidationViewController.m */; };
+		22BDF70C18E994CC0019145B /* RTAsyncFetchViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BDF70B18E994CC0019145B /* RTAsyncFetchViewModelTests.m */; };
 		2761CD60EB48447393E8A125 /* libPods-iOSRxTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */; };
+		7748A76AC67D4B15B127849D /* libPods-iOSRxTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB46B70799AD4DD1908E4420 /* libPods-iOSRxTestTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,13 +62,15 @@
 		2208345518DA00EB00D1AF4B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2208345D18DA00EB00D1AF4B /* iOSRxTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSRxTestTests-Info.plist"; sourceTree = "<group>"; };
 		2208345F18DA00EB00D1AF4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSRxTestTests.m; sourceTree = "<group>"; };
 		222DC5A918E6D3C90031A511 /* RTAsyncFetchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAsyncFetchViewController.h; path = RTAsyncFetch/RTAsyncFetchViewController.h; sourceTree = "<group>"; };
 		222DC5AA18E6D3C90031A511 /* RTAsyncFetchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTAsyncFetchViewController.m; path = RTAsyncFetch/RTAsyncFetchViewController.m; sourceTree = "<group>"; };
 		222DC5AD18E750260031A511 /* RTFormValidationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTFormValidationViewController.h; path = RTFormValidation/RTFormValidationViewController.h; sourceTree = "<group>"; };
 		222DC5AE18E750260031A511 /* RTFormValidationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTFormValidationViewController.m; path = RTFormValidation/RTFormValidationViewController.m; sourceTree = "<group>"; };
+		22BDF70B18E994CC0019145B /* RTAsyncFetchViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTAsyncFetchViewModelTests.m; sourceTree = "<group>"; };
 		38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSRxTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB46B70799AD4DD1908E4420 /* libPods-iOSRxTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSRxTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B0ECF2109B4437BC2FA939 /* Pods-iOSRxTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRxTest.xcconfig"; path = "Pods/Pods-iOSRxTest.xcconfig"; sourceTree = "<group>"; };
+		EA70B274C0064BA0B1DFEB90 /* Pods-iOSRxTestTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRxTestTests.xcconfig"; path = "Pods/Pods-iOSRxTestTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 				2208345618DA00EB00D1AF4B /* XCTest.framework in Frameworks */,
 				2208345818DA00EB00D1AF4B /* UIKit.framework in Frameworks */,
 				2208345718DA00EB00D1AF4B /* Foundation.framework in Frameworks */,
+				7748A76AC67D4B15B127849D /* libPods-iOSRxTestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +120,7 @@
 				2208343218DA00EB00D1AF4B /* Frameworks */,
 				2208343118DA00EB00D1AF4B /* Products */,
 				D1B0ECF2109B4437BC2FA939 /* Pods-iOSRxTest.xcconfig */,
+				EA70B274C0064BA0B1DFEB90 /* Pods-iOSRxTestTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +141,7 @@
 				2208343718DA00EB00D1AF4B /* UIKit.framework */,
 				2208345518DA00EB00D1AF4B /* XCTest.framework */,
 				38A305B3B6BF413CAD32427A /* libPods-iOSRxTest.a */,
+				CB46B70799AD4DD1908E4420 /* libPods-iOSRxTestTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,8 +176,8 @@
 		2208345B18DA00EB00D1AF4B /* iOSRxTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				2208346118DA00EB00D1AF4B /* iOSRxTestTests.m */,
 				2208345C18DA00EB00D1AF4B /* Supporting Files */,
+				22BDF70B18E994CC0019145B /* RTAsyncFetchViewModelTests.m */,
 			);
 			path = iOSRxTestTests;
 			sourceTree = "<group>";
@@ -220,9 +226,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2208346818DA00EB00D1AF4B /* Build configuration list for PBXNativeTarget "iOSRxTestTests" */;
 			buildPhases = (
+				73DB27C7A5774BFBA45A7390 /* Check Pods Manifest.lock */,
 				2208345018DA00EB00D1AF4B /* Sources */,
 				2208345118DA00EB00D1AF4B /* Frameworks */,
 				2208345218DA00EB00D1AF4B /* Resources */,
+				E29E9074C05A4CBE97CBD843 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +298,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		73DB27C7A5774BFBA45A7390 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		B6A544BA997847F69E13A789 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,6 +343,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-iOSRxTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E29E9074C05A4CBE97CBD843 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-iOSRxTestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -341,7 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2208346218DA00EB00D1AF4B /* iOSRxTestTests.m in Sources */,
+				22BDF70C18E994CC0019145B /* RTAsyncFetchViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +523,7 @@
 		};
 		2208346918DA00EB00D1AF4B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA70B274C0064BA0B1DFEB90 /* Pods-iOSRxTestTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOSRxTest.app/iOSRxTest";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -507,6 +546,7 @@
 		};
 		2208346A18DA00EB00D1AF4B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA70B274C0064BA0B1DFEB90 /* Pods-iOSRxTestTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOSRxTest.app/iOSRxTest";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RTAsyncFetchRepository.h"
+
 
 @interface RTAsyncFetchViewModel : NSObject
 
 @property (nonatomic, strong, readonly) NSString *nextLabelValue;
+
+- (instancetype) initWithRepository:(RTAsyncFetchRepository *)repository
+                          scheduler:(RACScheduler *) scheduler;
 
 - (void)fetchValue;
 @end

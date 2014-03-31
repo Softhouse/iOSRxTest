@@ -9,8 +9,6 @@
 #import "RTAsyncFetchViewModel.h"
 #import<ReactiveCocoa/ReactiveCocoa.h>
 #import "RACEXTScope.h"
-#import "RTAsyncFetchRepository.h"
-
 
 @interface RTAsyncFetchViewModel(){
     RACSubject *_runNext;
@@ -18,13 +16,15 @@
 
 // re-declared as readwrite
 @property (nonatomic, strong, readwrite) NSString *nextLabelValue;
-@property (nonatomic, strong, readwrite) RTAsyncFetchRepository *repository;
+
+@property (nonatomic, readonly) RTAsyncFetchRepository *repository;
 
 @end
 
 @implementation RTAsyncFetchViewModel
 
-- (instancetype) init
+- (instancetype) initWithRepository:(RTAsyncFetchRepository *)repository
+                          scheduler:(RACScheduler *) scheduler
 {
     self = [super init];
     
@@ -32,23 +32,17 @@
     
     _runNext = [RACSubject subject];
     
-    self.repository = [[RTAsyncFetchRepository alloc] init];
-    
-    
-    RACSignal *fetchFromRepositorySignal = [self.repository.fetchSignal deliverOn:[RACScheduler mainThreadScheduler]];
+    RACSignal *fetchFromRepositorySignal = [repository.fetchSignal deliverOn: scheduler];
 
     // we need to make a weak ref out of self, otherwise we'd get
     // a retain cycle in the blocks below
     @weakify(self);
 
-    [_runNext subscribeNext:^(id x) {
+    [_runNext subscribeNext:^(id _) {
         @strongify(self);
-        NSLog(@"_runNext subscribeNext, thread: %@", [NSThread currentThread]);
         [fetchFromRepositorySignal subscribeNext:^(id x) {
-            NSLog(@"Fetch done, thread: %@", [NSThread currentThread]);
             self.nextLabelValue = [x stringValue];
         } error:^(NSError *error) {
-            NSLog(@"Error in fetch");
             self.nextLabelValue = @"Error";
         } completed:^{
             NSLog(@"Fetch completed");

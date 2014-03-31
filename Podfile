@@ -10,5 +10,8 @@ end
 
 target "iOSRxTestTests" do
 
+  pod "OCMock"
+  pod "OCHamcrest"
+
 end
 

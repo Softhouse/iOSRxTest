@@ -34,7 +34,7 @@
         iterCount = [NSNumber numberWithInt:value + 1];
         
         NSLog(@"Sleeping for 2 seconds");
-        [NSThread sleepForTimeInterval:2];
+//        [NSThread sleepForTimeInterval:2];
         
         BOOL error = [iterCount integerValue] == 3;
         
