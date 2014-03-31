@@ -28,10 +28,7 @@
 {
     [super viewDidAppear:animated];
     
-    RTAsyncFetchRepository *repository = [[RTAsyncFetchRepository alloc] init];
-    
-    self.viewModel = [[RTAsyncFetchViewModel alloc] initWithRepository: repository
-                                                             scheduler: [RACScheduler mainThreadScheduler]];
+    self.viewModel = [[RTAsyncFetchViewModel alloc] init];
     
     RAC(self.nextLabel, text) = RACObserve(self.viewModel, nextLabelValue);
     

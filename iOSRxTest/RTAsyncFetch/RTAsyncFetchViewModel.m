@@ -17,11 +17,16 @@
 // re-declared as readwrite
 @property (nonatomic, strong, readwrite) NSString *nextLabelValue;
 
-@property (nonatomic, readonly) RTAsyncFetchRepository *repository;
-
 @end
 
 @implementation RTAsyncFetchViewModel
+
+- (instancetype) init
+{
+    RTAsyncFetchRepository *repository = [[RTAsyncFetchRepository alloc] init];
+    
+    return [self initWithRepository:repository scheduler:[RACScheduler mainThreadScheduler]];
+}
 
 - (instancetype) initWithRepository:(RTAsyncFetchRepository *)repository
                           scheduler:(RACScheduler *) scheduler
