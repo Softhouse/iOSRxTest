@@ -1,18 +1,18 @@
 //
-//  iOSRxTestTests.m
-//  iOSRxTestTests
+//  RTAsyncFetchViewModelTests.m
+//  iOSRxTest
 //
-//  Created by Thomas Lundström on 2014-03-19.
+//  Created by Thomas Lundström on 2014-03-31.
 //  Copyright (c) 2014 Thomas Lundström. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-@interface iOSRxTestTests : XCTestCase
+@interface RTAsyncFetchViewModelTests : SenTestCase
 
 @end
 
-@implementation iOSRxTestTests
+@implementation RTAsyncFetchViewModelTests
 
 - (void)setUp
 {
@@ -28,7 +28,7 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    STFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end
