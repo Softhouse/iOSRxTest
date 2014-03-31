@@ -16,3 +16,9 @@ To compile the code in this repo, you need CocoaPods (http://cocoapods.org)
  1. Install the pods - `pod install`
  1. Open the iOSRxTest.xcworkspace file (never ever the .xcodeproj file)
  1. Happy hacking!
+
+
+## License
+
+Copyright (c) 2014 Softhouse. See the LICENSE file for license rights and
+limitations (MIT).
