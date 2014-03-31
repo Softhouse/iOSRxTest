@@ -20,5 +20,5 @@ To compile the code in this repo, you need CocoaPods (http://cocoapods.org)
 
 ## License
 
-Copyright (c) 2014 Softhouse. See the LICENSE file for license rights and
+Copyright (c) 2014 Softhouse. See the licence.txt file for license rights and
 limitations (MIT).
