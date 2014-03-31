@@ -33,8 +33,8 @@
         int value = [iterCount intValue];
         iterCount = [NSNumber numberWithInt:value + 1];
         
-        NSLog(@"Sleeping for 2 seconds");
-//        [NSThread sleepForTimeInterval:2];
+        NSLog(@"Sleeping for 2 seconds - here we'd normally fetch from network or file");
+        [NSThread sleepForTimeInterval:2];
         
         BOOL error = [iterCount integerValue] == 3;
         
